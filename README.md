@@ -1,6 +1,5 @@
 [![PyPI](https://img.shields.io/pypi/v/simplesam.svg?)](https://pypi.org/project/mergeBams/)
 <!-- [![Build Status](https://travis-ci.org/mdshw5/simplesam.svg?branch=master)](https://travis-ci.org/mdshw5/simplesam) -->
-[![Documentation Status](https://readthedocs.org/projects/mergeBams/badge/?version=latest)](https://mergeBams.readthedocs.io/en/latest/?badge=latest)
 
 # mergeBams
 ==========
