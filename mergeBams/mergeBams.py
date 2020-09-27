@@ -29,14 +29,14 @@ class BamMerge:
         if self.process_bc:
             if len(self.bcs) != len(self.inputs):
                 raise ValueError('Number of input filenames and number of barcodes do not match:\nInputs: %s\nBarcodes: %s', self.inputs, self.labels)
-        self.iter_total=len(self.inputs)-1
+        self.iter_total=len(self.inputs)
 
     def merge(self):
-        bamtmp = pysam.AlignmentFile(self.inputs[0])
+        bamtmp = pysam.AlignmentFile(self.inputs[0], 'rb')
         bamout = pysam.AlignmentFile(self.outfile,'wb', template=bamtmp)
         bamtmp.close()
         for ITER in range(self.iter_total):
-            bam = pysam.AlignmentFile(self.inputs[ITER])
+            bam = pysam.AlignmentFile(self.inputs[ITER], 'rb')
             for read in bam:
                 #print(read)
                 try:
