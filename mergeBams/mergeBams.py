@@ -2,7 +2,13 @@
 import os
 import sys
 import pysam
+import csv
+import binascii
+from gzip import open
 
+def is_gz_file(filepath):
+    with open(filepath, 'rb') as test_f:
+        return binascii.hexlify(test_f.read(2)) == b'1f8b'
 
 class BamMerge:
     def __init__(self, *args, **kwargs):
@@ -29,9 +35,16 @@ class BamMerge:
         if self.process_bc:
             if len(self.bcs) != len(self.inputs):
                 raise ValueError('Number of input filenames and number of barcodes do not match:\nInputs: %s\nBarcodes: %s', self.inputs, self.labels)
+            self.outbcs = os.path.join(self.cli_args.out, "outbcs.tsv")
+            self.bc_is_gz = [is_gz_file(i) for i in self.bcs]
         self.iter_total=len(self.inputs)
 
     def merge(self):
+        self.mergeAlignments()
+        if self.process_bc:
+            self.mergeBarcodes()
+
+    def mergeAlignments(self):
         bamtmp = pysam.AlignmentFile(self.inputs[0], 'rb')
         bamout = pysam.AlignmentFile(self.outfile,'wb', template=bamtmp)
         bamtmp.close()
@@ -48,3 +61,15 @@ class BamMerge:
                 bamout.write(read)
             bam.close()
         bamout.close()
+
+    def mergeBarcodes(self):
+        with open(self.outbcs, 'wt') as out_file:
+            tsv_writer = csv.writer(out_file, delimiter='\t')
+            for ITER in range(self.iter_total):
+                if self.bc_is_gz[ITER]:
+                    tsv_in = gzip.open(self.bcs[ITER], 'rt')
+                else:
+                    tsv_in = open(self.bcs[ITER])
+                for row in tsv_in:
+                    tsv_writer.writerow(self.labels[ITER]+row)
+                tsc_in.close()
