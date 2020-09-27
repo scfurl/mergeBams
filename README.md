@@ -37,7 +37,7 @@ mergeBams -h
 
 
 
-## Usage
+## Help
 
 ```bash
 usage: mergeBams [-h] -i INPUTS [-l LABELS] [-b BCS] [-o OUT]
@@ -57,7 +57,15 @@ optional arguments:
   --cell_tag CELL_TAG   set if cell barcode tag should not be CB
 ```
 
+## Usage
+
+```bash
+mergeBams -i t1.bam,t2.bam \
+          -l t1_,t2_ \
+          -b barcodes1.tsv,barcodes2.tsv \
+          -o /home/user/test
+```
 
 ## Acknowledgements
 
-Written by Scott Furlan
+Written by Scott Furlan with help from cfcooldood and rcguy

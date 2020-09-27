@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
     setuptools.setup(
     name="mergeBams",
-    version="0.12",
+    version="0.13",
     author="Scott Furlan",
     author_email="scottfurlan@gmail.com",
     description="Merge sam/bam files with intelligent cell barcode preservation",
