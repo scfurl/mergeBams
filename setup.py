@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
     setuptools.setup(
     name="mergeBams",
-    version="0.1",
+    version="0.11",
     author="Scott Furlan",
     author_email="scottfurlan@gmail.com",
     description="Merge sam/bam files with intelligent cell barcode preservation",
@@ -34,14 +34,6 @@ python3 -m twine upload dist/*
 scfurl
 
 
-**At SCRI do the following**
-
-module load python
-python3 -m pip install --user pipx
-python3 -m pipx ensurepath
-pipx install --include-deps --pip-args '--trusted-host pypi.org --trusted-host files.pythonhosted.org' mergeBams
-pipx install --spec git+https://github.com/scfurl/mergeBams@dev --include-deps mergeBams --pip-args '--trusted-host pypi.org --trusted-host files.pythonhosted.org'
-
 
 **At the FHCRC do the following... to install pipx**
 sFH
@@ -51,6 +43,6 @@ python3 -m pipx ensurepath
 
 
 pipx uninstall mergeBams
-pipx install --spec git+https://github.com/scfurl/mergeBams --include-deps mergeBams 
+pipx install git+https://github.com/scfurl/mergeBams --include-deps
 pipx install --include-deps mergeBams
 """
