@@ -107,8 +107,49 @@ A00613:162:HKWCTDRXX:2:2177:9046:12085  4 * 0 0 * * 0 0 AAGCAGTGGTATCAACGCAGAGTA
 A00613:162:HKWCTDRXX:2:2234:20546:22514 4 * 0 0 * * 0 0 AAGCAGTGGTATCAACGCAGAGTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAGTAAAAAACACCCCCGGTGGGGGGTGGGTAATT FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFF,,:,F:,F,,:,,FF,::,,,FF,,,,::,,,,F NH:i:0  HI:i:0  AS:i:36 nM:i:0  uT:A:1  xf:i:0  li:i:0  BC:Z:AACGTCAA QT:Z:FFFFFFFF CR:Z:TTTGTCATCGGTTCGG CY:Z:FFFFFFFFFFFFFFFFUR:Z:GCACTGCGAG  UY:Z:FF:FFFFF:F UB:Z:GCACTGCGAG RG:Z:B2_GEX:0:1:HKWCTDRXX:2 CB:Z:t2_TTTGTCATCGGTTCGG-1
 ```
 
+Similarly and if desired, mergeBams will concatenate and add labels to barcodes.tsv files (for compressed barcodes.tsv.gz see below for an explanation of how compression of barcodes files are handled).  For example, in the above case...
 
-Note that this program is compression aware and will compress output of barcodes file to match input. I.e. the following will produce compressed barcode file as output
+
+```bash
+head -n 3 barcodes1.tsv
+```
+
+```bash
+AAACCTGAGCCCGAAA-1
+AAACCTGAGGTGCTTT-1
+AAACCTGAGTACTTGC-1
+```
+
+**AND**
+
+```bash
+tail -n 3 barcodes2.tsv
+```
+
+```bash
+TTTGTCATCATTCACT-1
+TTTGTCATCCGTTGTC-1
+TTTGTCATCCTGCAGG-1
+```
+
+Will be joined and given labels.
+
+```bash
+(head -n 3 outbcs.tsv; tail -n 3 outbcs.tsv) > topandbottombc.txt
+cat topandbottombc.txt
+```
+
+```bash
+t1_AAACCTGAGCCCGAAA-1
+t1_AAACCTGAGGTGCTTT-1
+t1_AAACCTGAGTACTTGC-1
+t2_TTTGTCATCATTCACT-1
+t2_TTTGTCATCCGTTGTC-1
+t2_TTTGTCATCCTGCAGG-1
+```
+
+
+Note that this program is compression aware and will compress output of barcodes file to match input. I.e. the following will produce compressed barcode file as output.  All supplied barcodes files must either be all compressed or all uncompressed.
 
 ```bash
 mergeBams -i t1.bam,t2.bam \
