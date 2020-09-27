@@ -46,4 +46,5 @@ class BamMerge:
                     continue
                 read.set_tag(self.cell_tag, self.labels[ITER]+cb, "Z")
                 bamout.write(read)
+            bam.close()
         bamout.close()
