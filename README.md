@@ -6,7 +6,7 @@
 
 version 0.11
 
-Merge sam/bam files with intelligent cell barcode preservation
+Merge sam/bam files with intelligent cell barcode preservation.  This has been tested on bam file and tsv output from the 10X Genomics Cellranger program.  The implementation of mergeBams was motivated by and primarily designed for working with Cellranger output.
 
 ## Requirements
 
@@ -20,7 +20,14 @@ python3 -m pip install --user pipx
 python3 -m pipx ensurepath
 
 ```
+
+To read more about pipx, please visit https://github.com/pipxproject/pipx.
+
+
+
 ## Installation of mergeBams
+
+With pipx installed, installation of mergeBams is trivial.
 
 ```bash
 pipx install --include-deps mergeBams
@@ -33,8 +40,6 @@ You should then be able to test installation by calling mergeBams.  After runnin
 ```bash
 mergeBams -h
 ```
-
-
 
 ## Help
 
@@ -57,6 +62,8 @@ optional arguments:
 ```
 
 ## Usage
+
+The following is an example of merging two bam files and two barcodes.tsv files that were derived from them.
 
 ```bash
 mergeBams -i t1.bam,t2.bam \
