@@ -5,6 +5,7 @@ import pysam
 import csv
 import binascii
 import gzip
+import shutil
 
 magic_dict = {
     b"\x8b\x1f": "gz",
@@ -115,3 +116,19 @@ class BamMerge:
                         out_file.writelines(newline)
                 tsv_in.close()
             out_file.close()
+            if self.bc_is_gz:
+                with open(self.outbcs, 'rb') as f_in:
+                    with gzip.open(str(self.outbcs +'.gz'), 'wb') as f_out:
+                        shutil.copyfileobj(f_in, f_out)
+                os.remove(self.outbcs)
+
+
+
+
+
+
+
+
+
+
+
