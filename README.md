@@ -68,7 +68,7 @@ mergeBams -i t1.bam,t2.bam \
 
 ## Expected output
 
-### In the above example mergeBams will take input bams t1.bam and t2.bam which have the following data...
+**In the above example mergeBams will take input bams t1.bam and t2.bam which have the following data...**
 
 ```bash
 samtools view t1.bam | head -n 3 -
@@ -80,7 +80,7 @@ A00613:162:HKWCTDRXX:1:1166:7455:25708  256 1 16724 0 42M92N49M * 0 0 GTGGGGGCGG
 A00613:162:HKWCTDRXX:1:1272:21866:31062 256 1 18298 0 73M18S  * 0 0 CTCAATCTTGGCCTGGGCCAAGGAGACCTTCTCTCCAATGGCCTGCACCTGGCTCCGGCTCTGCTCTACCTGCGAAGTTGCTCGGCGCCCT FFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF NH:i:8  HI:i:5  AS:i:71 nM:i:0  RE:A:I  li:i:0  BC:Z:TTGAGATC QT:Z::FFFFFFF CR:Z:AACTGGTAGAGTGACC CY:Z:FFFFFFFFF:FFFFFF CB:Z:AACTGGTAGAGTGACC-1 UR:Z:GTTCACCATA UY:Z:FFFFFFFFFF UB:Z:GTTCACCATA RG:Z:B1_GEX:0:1:HKWCTDRXX:1
 ```
 
-### AND
+**AND**
 
 ```bash
 samtools view t2.bam | tail -n 3 -
@@ -92,7 +92,7 @@ A00613:162:HKWCTDRXX:2:2177:9046:12085  4 * 0 0 * * 0 0 AAGCAGTGGTATCAACGCAGAGTA
 A00613:162:HKWCTDRXX:2:2234:20546:22514 4 * 0 0 * * 0 0 AAGCAGTGGTATCAACGCAGAGTACTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTAGTAAAAAACACCCCCGGTGGGGGGTGGGTAATT FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFFFFFFFFFFFFF,,:,F:,F,,:,,FF,::,,,FF,,,,::,,,,F NH:i:0  HI:i:0  AS:i:36 nM:i:0  uT:A:1  xf:i:0  li:i:0  BC:Z:AACGTCAA QT:Z:FFFFFFFF CR:Z:TTTGTCATCGGTTCGG CY:Z:FFFFFFFFFFFFFFFFCB:Z:TTTGTCATCGGTTCGG-1  UR:Z:GCACTGCGAG UY:Z:FF:FFFFF:F UB:Z:GCACTGCGAG RG:Z:B2_GEX:0:1:HKWCTDRXX:2
 ```
 
-### These bam files will be concatenated but will prepend the cell barcode (CB tag) with the label supplied in the program call using the -l flag
+**These bam files will be concatenated but will prepend the cell barcode (CB tag) with the label supplied in the program call using the -l flag**
 
 ```bash
 (samtools view out.bam | head -n 3 -; samtools view out.bam | tail -n 3 -) > topandbottom.txt
