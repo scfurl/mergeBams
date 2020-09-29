@@ -51,7 +51,7 @@ class BamMerge:
         self.cell_tag = self.cli_args.cell_tag
         self.inputs = [entry.strip() for entry in self.cli_args.inputs.strip().split(',')]
         if self.cli_args.labels is None:
-            self.labels = [range(len(self.ibams))]
+            self.labels = [range(len(self.inputs))]
         else:
             self.labels = [entry.strip() for entry in self.cli_args.labels.strip().split(',')]
         if self.cli_args.bcs is None:
