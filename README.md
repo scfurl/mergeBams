@@ -4,6 +4,8 @@
 # mergeBams
 ==========
 
+### NOTE THAT A FASTER BETTER VERSION OF mergeBams has been implemented in Rust: https://github.com/furlan-lab/mergebams
+
 version 0.14
 
 Merge sam/bam files with intelligent cell barcode preservation.  This has been tested on bam file and tsv output from the 10X Genomics Cellranger program.  The implementation of mergeBams was motivated by and primarily designed for working with Cellranger output.
